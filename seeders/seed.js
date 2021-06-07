@@ -1,5 +1,5 @@
 let mongoose = require("mongoose");
-let db = require("../models");
+let db = require("../models/fitness");
 
 mongoose.connect("mongodb://localhost/fitness", {
   useNewUrlParser: true,
@@ -124,8 +124,8 @@ let fitnessSeed = [
   }
 ];
 
-db.fitness.deleteMany({})
-  .then(() => db.fitness.collection.insertMany(fitnessSeed))
+db.deleteMany({})
+  .then(() => db.collection.insertMany(fitnessSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
